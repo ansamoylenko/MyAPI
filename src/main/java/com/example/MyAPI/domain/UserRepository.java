@@ -8,5 +8,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer>
 {
-   Optional<User> findDistinctByLogin(String login);
+   User findDistinctByLogin(String login);
+   User findDistinctById(int id);
+   Iterable<User> findAllByNameContainingIgnoreCase (String name);
+
 }
