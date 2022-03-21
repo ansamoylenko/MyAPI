@@ -1,5 +1,6 @@
 package com.example.MyAPI.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,19 +15,23 @@ import javax.persistence.Id;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 
-
+@Schema(description = "Структура пользователя")
 @Entity
 public class User
 {
+    @Schema(description = "Уникальный идентификатор пользователя", example = "23", accessMode = Schema.AccessMode.READ_ONLY)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Schema(description = "Логин", example = "alex")
     private  String login;
+    @Schema(description = "Пароль", example = "1234")
     private String password;
+    @Schema(description = "Имя пользователя", example = "Александр")
     private String name;
+    @Schema(description = "Фамилия пользователя", example = "Самойленко")
     private String lastname;
 
     public User(String login, String password, String name, String lastname) {

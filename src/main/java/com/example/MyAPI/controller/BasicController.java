@@ -2,6 +2,7 @@ package com.example.MyAPI.controller;
 
 import com.example.MyAPI.domain.UserRepository;
 import com.example.MyAPI.domain.User;
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Hidden
 public class BasicController
 {
     @Autowired
@@ -21,15 +23,6 @@ public class BasicController
     public String hello()
     {
         return "Hello";
-    }
-
-
-
-    @PostMapping("user/add")
-    public ResponseEntity<Integer> add(@RequestBody User user)
-    {
-        User newUser = userRepository.save(user);
-        return ResponseEntity.ok(newUser.getId());
     }
 
 
